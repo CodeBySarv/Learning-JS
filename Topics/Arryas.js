@@ -80,12 +80,5 @@ console.log(DivisonBy2)
 const sum = nums.reduce( (start , next) => start + next , 0) // initially takes 0 as start 
 console.log(sum)
 
-
-
-
-console.log("")
-
-
-
-
+console.log("----- Let's move to .... ---------")
 

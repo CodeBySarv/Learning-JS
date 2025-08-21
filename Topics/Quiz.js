@@ -21,3 +21,25 @@ let counts = fruits.reduce((count ,fruit) => {
     return count;
  },{})
  console.log(counts)
+
+ // Quiz 4 : Create a program to check speed limits:
+
+       // > Speed < 40 → "Too slow"
+
+       // > Speed < 60 → "Normal speed"
+
+       // > Speed < 100 → "Fast"
+
+       // > Speed ≥ 100 → "Over Speeding!
+
+let speed = 55
+
+if (speed < 40) {
+    console.log("Too slow");
+  } else if (speed < 60) {
+    console.log("Normal speed");
+  } else if (speed < 100) {
+    console.log("Fast");
+  } else {
+    console.log("Over Speeding!");
+  }

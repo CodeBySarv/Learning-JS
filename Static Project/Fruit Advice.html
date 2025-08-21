@@ -1,0 +1,166 @@
+<!-- Create a button that asks the user to select a favorite fruit from a list (using prompt())
+
+Use switch to show different messages like:
+
+"Apple keeps doctor away"
+
+"Banana is full of energy"
+
+"Mango is the king of fruits" -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(60, 156, 159);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .box {
+            width: 550px;
+            min-height: 300px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(34 91 93 / 97%);
+            color: white;
+            box-shadow: 3px 4px 8px rgb(108 173 174 / 62%);
+            border-radius: 7px;
+        }
+
+        .box h3 {
+            border: 1px solid whitesmoke;
+            padding: 15px 20px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .box .info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .box .info select {
+            padding: 10px;
+            width: 140px;
+            color: black;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .box .info button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .box p {
+            border: 1px solid;
+            font-size: 18px;
+            padding: 12px;
+            text-align: center;
+            min-height: 50px;
+            width: 270px;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        /* 📱 Responsive for small screens */
+        @media only screen and (max-width: 700px) {
+            .box {
+                width: 90%;
+                /* shrink box */
+                padding: 15px;
+            }
+
+            .box h3 {
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .box .info {
+                flex-direction: column;
+                /* stack select & button */
+                align-items: center;
+            }
+
+            .box .info select,
+            .box .info button {
+                width: auto;
+                /* no 100% width */
+                min-width: 150px;
+            }
+
+            .box p {
+                width: 90%;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h3> Choose Fruit Takes Doctor Advice</h3>
+            <div class="info">
+                <select name="Fruits" id="Fruits">
+                    <option value="">Select fruit</option>
+                    <option value="Mango">Mango</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Apple">Apple</option>
+                </select>
+                <button onclick="ChooseFruit()">Submit</button>
+            </div>
+            <p id="output"></p>
+        </div>
+    </div>
+
+    <script>
+
+        function ChooseFruit() {
+
+            const Fruits = document.getElementById("Fruits").value
+            const Output = document.getElementById("output")
+
+            switch (Fruits) {
+                case "Mango":
+                    Output.textContent = "Mango is the king of fruits"
+                    break;
+                case "Banana":
+                    Output.textContent = "Banana is full of energy"
+                    break;
+                case "Apple":
+                    Output.textContent = "Apple keeps doctor away"
+                    break;
+                default:
+                    alert("Select a fruit First")
+                    Output.textContent = ""
+            }
+        }
+
+    </script>
+</body>
+
+</html>
