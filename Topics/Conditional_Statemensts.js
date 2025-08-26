@@ -19,6 +19,7 @@ else{
 console.log("Grade System - Using Else-if ladder")
 
 let marks = 67
+// let marks = prompt("Enter a Marks to know your Grade") 
 
 if ( marks < 0 || marks > 100 || isNaN(marks)){
     console.log("Invalid Number for Marks")

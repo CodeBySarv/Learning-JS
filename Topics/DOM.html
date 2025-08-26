@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM All Examples</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            padding: 10px;
+            background: lightblue;
+            border: 1px solid #333;
+        }
+
+        .highlight {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="First">Box1</div>
+        <div class="box">Box2</div>
+        <div class="box" id="Third">Box3</div>
+        <div class="box">Box4</div>
+        <div class="box">Box5</div>
+    </div>
+
+    <script>
+
+        // ========================
+        // 0. BASIC
+        // ========================
+
+        document.body
+        // whole body of html page
+
+        document.body.childNodes
+        //  NodeList(5)[text, div.container, text, script, text]
+
+        document.body.childNodes[1]
+        // < div class=​"container" >​…​</div > flex
+
+        document.body.childNodes[1].children
+        //HTMLCollection(5)[ div#First.box.highlight, div.box, div.box, div.box, div.box, div.box ]
+
+
+        // ========================
+        // 1. SELECTION
+        // ========================
+        document.getElementById("First");
+        // → <div class="box" id="First">Box1</div>
+
+        document.getElementsByClassName("box");
+        // → HTMLCollection(5) [div#First.box, div.box, div#Third.box, div.box, div.box]
+
+        document.getElementsByTagName("div");
+        // → HTMLCollection(6) [container div + 5 box divs]
+
+        document.getElementById("First").nodeName;
+        // → "DIV"
+
+        document.querySelector(".container").firstChild.nodeType;
+        // → 3  (because it’s a text node — the whitespace/line break before Box1)
+
+        document.querySelector(".box");
+        // → <div class="box" id="First">Box1</div>
+
+        document.querySelectorAll(".box");
+        // → NodeList(5) [div#First.box, div.box, div#Third.box, div.box, div.box]
+
+
+        // ========================
+        // 2. TRAVERSAL
+        // ========================
+        document.getElementById("First").parentNode;
+        // → <div class="container">...</div>
+
+        document.querySelector(".container").children;
+        // → HTMLCollection(5) [Box1, Box2, Box3, Box4, Box5]
+
+        document.querySelector(".container").firstElementChild;
+        // → <div class="box" id="First">Box1</div>
+
+        document.querySelector(".container").lastElementChild;
+        // → <div class="box">Box5</div>
+
+        document.getElementById("First").nextElementSibling;
+        // → <div class="box">Box2</div>
+
+        document.getElementById("Third").previousElementSibling;
+        // → <div class="box">Box2</div>
+
+
+        // ========================
+        // 3. CONTENT
+        // ========================
+        document.getElementById("First").innerHTML = "Changed Box1";
+        // → Box1 text becomes "Changed Box1"
+
+        document.getElementById("Third").textContent = "Changed Box3";
+        // → Box3 text becomes "Changed Box3"
+
+
+        // ========================
+        // 4. ATTRIBUTES
+        // ========================
+        document.getElementById("First").setAttribute("title", "I am First Box");
+        // → Adds title="I am First Box" to Box1
+
+        document.getElementById("First").getAttribute("title");
+        // → "I am First Box"
+
+        document.getElementById("Third").removeAttribute("id");
+        // → Removes the id="Third" from Box3
+
+
+        // ========================
+        // 5. STYLES
+        // ========================
+        document.querySelector(".box").style.backgroundColor = "lightgreen";
+        // → First box background turns lightgreen
+
+        document.querySelector(".box").style.fontWeight = "bold";
+        // → First box text becomes bold
+
+
+        // ========================
+        // 6. ADD / REMOVE ELEMENTS
+        // ========================
+
+        let new_box2 = document.createElement("div")               // undefined
+        new_box2.className = "box"                                 // 'box'
+        new_box2.innerHTML = "Hello"                               // 'Hello'
+        document.querySelector(".container").append(new_box2)      // container's last box
+        document.querySelector(".container").prepend(new_box2)     // container's First box
+        document.querySelector(".container").before(new_box2)      
+        document.querySelector(".container").after(new_box2)
+        
+        let newBox = document.createElement("div");
+        newBox.className = "box";
+        newBox.innerText = "Box6 (New)";
+        document.querySelector(".container").appendChild(newBox);
+        // → Adds a new Box6 at the end
+
+        let newBox2 = document.createElement("div");
+        newBox2.className = "box";
+        newBox2.innerText = "Box0 (New First)";
+        document.querySelector(".container").insertBefore(newBox2, document.querySelector(".container").firstElementChild);
+        // → Adds Box0 at the beginning
+
+        document.querySelector(".container").children[2].remove();
+        // → Removes the 3rd child in container
+
+
+        // ========================
+        // 7. CLONING
+        // ========================
+        let clone = document.querySelector(".box").cloneNode(true);
+        clone.textContent = "Clone (first) Box"
+        document.querySelector(".container").appendChild(clone);
+        // → Clones first box and appends at end
+
+
+        // ========================
+        // 8. EVENTS
+        // ========================
+        document.getElementById("First").addEventListener("click", function () {
+            alert("First box clicked!");
+        });
+        // → Clicking Box1 shows an alert
+
+
+        // ========================
+        // 9. CLASSLIST
+        // ========================
+        document.getElementById("First").classList.add("highlight");
+        // → Adds red border to Box1
+
+        document.getElementById("First").classList.contains("highlight");
+        // → true
+
+        document.getElementById("First").classList.remove("highlight");
+        // → Removes red border
+
+        document.getElementById("First").classList.toggle("highlight");
+        // → Toggles highlight class on/off
+
+
+        // ========================
+        // 10. DIMENSIONS
+        // ========================
+        document.getElementById("First").offsetHeight;
+        // → Returns height of Box1 (in px)
+
+        document.getElementById("First").offsetWidth;
+        // → Returns width of Box1 (in px)
+    </script>
+</body>
+
+</html>

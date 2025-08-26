@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorial Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #529fde, #5151f3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 450px;
+      padding: 30px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      color: white;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      outline: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #f1f1f1;
+      transform: translateY(-2px);
+    }
+
+    /* Hidden result box */
+    .result-box {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .error {
+      color: #ffcccc;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Factorial Calculator</h2>
+    <input type="number" id="num" placeholder="Enter a positive number">
+    <br>
+    <button onclick="findFactorial()">Calculate</button>
+
+    <!-- Result box (hidden initially) -->
+    <div class="result-box" id="resultBox"></div>
+  </div>
+
+  <script>
+    function findFactorial() {
+      const resultBox = document.getElementById("resultBox");
+      let num = document.getElementById("num").value.trim();
+      num = parseInt(num);
+
+      if (isNaN(num) || num < 0) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `<span class="error">⚠ Please enter a valid non-negative number.</span>`;
+        return;
+      }
+
+      if (num > 170) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `<span class="error">⚠ Number too large! Try ≤ 170.</span>`;
+        return;
+      }
+
+      let fact = 1;
+      for (let i = 1; i <= num; i++) {
+        fact *= i;
+      }
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `✅ Factorial of <b>${num}</b> is <b>${fact}</b>`;
+    }
+  </script>
+</body>
+</html>

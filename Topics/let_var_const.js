@@ -29,3 +29,23 @@ if(y=34){
 y = 46 // we can change or assign new value to 'y'
 console.log(y)
 
+// Know also this 
+
+let r = 46 
+
+function value(){
+    let r = 48 
+    console.log(r)
+}
+value(r)  // Ouput : 48
+console.log(r)  // Output : 46
+
+// One More 
+
+let a = 10;
+if (true) {
+  let a = 20;
+  console.log(a); // Ouput : 20
+}
+console.log(a);  // Output : 10
+
