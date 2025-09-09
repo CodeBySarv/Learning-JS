@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Greeting Example</title>
+  <script>
+    function greetUser() {
+      const name = prompt("What is your name?");
+      if (!name) return;
+
+      const hour = new Date().getHours();
+      let greeting;
+
+      switch (true) {
+        case (hour >= 5 && hour < 12):
+          greeting = "Good Morning";
+          break;
+        case (hour >= 12 && hour < 18):
+          greeting = "Good Afternoon";
+          break;
+        case (hour >= 18 && hour < 22):
+          greeting = "Good Evening";
+          break;
+        default:
+          greeting = "Good Night";
+      }
+
+      document.getElementById("greeting").innerText = `${greeting}, ${name}!`;
+    }
+  </script>
+</head>
+<body>
+  <button onclick="greetUser()">Click Me</button>
+  <h2 id="greeting"></h2>
+</body>
+</html>

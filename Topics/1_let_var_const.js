@@ -4,6 +4,9 @@ console.log("var hoisting")
 x = 5
 console.log("Value in X is : "+x)
 
+console.log(y)  // undefined  -- >          var y   ===>    console.log(y)  ===>    y=6  
+var y = 6
+
 console.log("let in Block - scope")
 
 if(true){
@@ -17,7 +20,7 @@ console.log("Const in JS - Immutable")
 const PI = 3.14;
 console.log(PI)
 
-// const PI = 4.5 [ 'PI' has already been declared ]
+// PI = 4.5 [ 'PI' has already been declared ]
 
 console.log("Let can change")
 

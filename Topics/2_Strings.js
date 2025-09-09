@@ -1,20 +1,22 @@
-console.log("A string is a sequence of characters used to represent text.")
+console.log("A string is a sequence of characters used to represent text. (immutable)")
 
 
 // 1. convert ----> Number
 
 let value = "34"
 
-console.log(typeof (value))
+console.log(typeof(value))          // String
 
-console.log(Number(value) + 34) // use number() function
+console.log(value + 34)             // 3434
+
+console.log(Number(value) + 34)     // use number() function
 
 
 // 2. How many characters present in a string :
 
 const str = "Hello World"
 
-console.log(str + " : " + str.length) // we can't use length() [ is not a function ]
+console.log(str + " : " + str.length)   // we can't use length() [ is not a function ]
 
 console.log(` str[10] = str[str.length-1]`)
 

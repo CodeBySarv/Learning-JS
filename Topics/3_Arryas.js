@@ -81,4 +81,3 @@ const sum = nums.reduce( (start , next) => start + next , 0) // initially takes 
 console.log(sum)                                // [ 15 ]
 
 console.log("----- Let's move to .... ---------")
-
