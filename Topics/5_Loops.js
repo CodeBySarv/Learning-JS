@@ -173,3 +173,4 @@ for (letter in count){
     console.log(`${letter} appears ${count[letter]} times !`)
 }
 
+// =======================================================================================
